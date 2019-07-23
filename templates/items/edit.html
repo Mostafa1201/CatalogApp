@@ -1,0 +1,29 @@
+{% extends "master.html" %}
+{% block content %}
+<div class="center-content">
+    <form action="{{ url_for('editItem',item_id=item.id)}}" method = 'post'>
+        <div class="form-group">
+          <label for="title">Title</label>
+          <input type="text" class="form-control" name='title' id="title" aria-describedby="titleHelp" value="{{item.title}}">
+          <small id="titleHelp" class="form-text text-muted">provide a good name for the item that will be inserted in the selected catagory</small>
+        </div>
+        <div class="form-group">
+            <label for="description">Description</label>
+            <textarea class="form-control" name="description" id="description" rows="3" value="{{item.description}}">{{item.description}}</textarea>
+        </div>
+        <div class="form-group">
+        <label for="category">Category</label>
+        <select id="category" name="category" class="form-control">
+            {% for category in categories %}
+                {% if category.id == item.category_id %}
+                    <option value="{{category.id}}" selected>{{category.name}}</option>
+                {% else %}
+                    <option value="{{category.id}}">{{category.name}}</option>
+                {% endif %}
+            {% endfor %}
+        </select>
+        </div>
+        <button type="submit" class="btn btn-primary">Save</button>
+    </form>
+</div>
+{% endblock %}

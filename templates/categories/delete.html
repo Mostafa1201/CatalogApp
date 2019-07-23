@@ -1,0 +1,14 @@
+{% extends "master.html" %}
+{% block content %}
+<div class="home-wrapper">
+    <div class="container">
+        <div class="content-wrapper">
+            <form action="{{ url_for('deleteCategory',category_id=category.id)}}" method = 'post'>
+                <h2 class="container_title">Delete Category</h2>
+                <p class="container_description">Are you sure you want to delete {{category.name}} Category ?</p>
+                <button type="submit" class="btn btn-primary">Delete</button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

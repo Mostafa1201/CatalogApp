@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Flask Template Example</title>
+    {% include "layouts/links.html" %}
+</head>
+
+<body>
+    <div class="body-wrapper">
+        {% include "layouts/header.html" %}
+        {% block content %}    
+        {% endblock %}
+        {% include "layouts/footer.html" %}
+    </div>
+    {% include "layouts/scripts.html" %}
+</body>
+
+</html>

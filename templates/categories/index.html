@@ -1,0 +1,42 @@
+{% extends "master.html" %}
+{% block content %}
+<div class="home-wrapper">
+    <div class="container">
+        <div class="row content-wrapper">
+            <div class="col-lg-3" id="categories">
+                {% if login_session['username'] %}
+                    <a class="show_page_link" href="/categories/new" id="add_category">Add Category</a>
+                {% endif %}
+                <div class="content-header">
+                    <h1>Categories</h1>
+                </div>
+                <div class="content-items">
+                    <ul>
+                        {% for category in categories %}
+                            <li><a href="/categories/{{category.id}}/items"><h4>{{ category.name }}</h4></a></li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-1">
+                <div class="verticalLine"></div>
+            </div>
+            <div class="col-lg-8">
+                <div class="content-header">
+                    {% if login_session['username'] %}
+                        <a class="show_page_link" href="/items/new" id="add_item">Add Item</a>
+                    {% endif %}
+                    <h1>Latest Items</h1>
+                </div>
+                <div class="content-items">
+                    <ul>    
+                        {% for item in latestAddedItems %}
+                        <li><a href="/items/{{item.id}}"><h4>{{ item.title }} <span style="color:#af9999">({{ item.category.name}})</span></h4></a></li>
+                        {% endfor %}                            
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

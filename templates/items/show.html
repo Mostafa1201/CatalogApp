@@ -1,0 +1,15 @@
+{% extends "master.html" %}
+{% block content %}
+<div class="home-wrapper">
+    <div class="container">
+        <div class="content-wrapper">
+            <h2 class="container_title">{{item.category.name}}</h2>
+            <p class="container_description">{{item.description}}</p>
+            {% if login_session['username'] and login_session['user_id'] == item.user_id %}
+                <a class="show_page_link" href="{{ url_for('editItem',item_id=item.id)}}" id="edit_item">Edit</a>
+                <a class="show_page_link" href="{{ url_for('deleteItem',item_id=item.id)}}" id="delete_item">Delete</a>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,46 @@
+{% extends "master.html" %}
+{% block content %}
+<div class="home-wrapper">
+    <div class="container">
+        <div class="row content-wrapper">
+            <div class="col-lg-3" id="categories">
+                {% if login_session['username'] %}
+                    <a class="show_page_link" href="/categories/new" id="add_category">Add Category</a>
+                {% endif %}
+                <div class="content-header">
+                    <h1>Categories</h1>
+                </div>
+                <div class="content-items">
+                    <ul>
+                        {% for category in categories %}
+                            <li><h4>{{ category.name }}</h4></li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-1">
+                <div class="verticalLine"></div>
+            </div>
+            <div class="col-lg-8">
+                <div class="content-header">
+                    {% if login_session['username'] and login_session['user_id'] == category.user_id%}
+                        <a class="show_page_link" href="{{ url_for('editCategory',category_id=category.id)}}" id="edit_category">Edit This Category</a>
+                        <a class="show_page_link" href="{{ url_for('deleteCategory',category_id=category.id)}}" id="delete_category">Delete This Category</a>
+                    {% endif %}
+                    {% if login_session['username'] %}
+                        <a class="show_page_link" href="{{ url_for('newItem')}}" id="add_item">Add Item</a>
+                    {% endif %}
+                    <h1>{{ category.name }} {% if items.count() > 1 %}({{ items.count() }} items){% endif %}</h1>
+                </div>
+                <div class="content-items">
+                    <ul>
+                        {% for item in items %}
+                        <li><a href="/items/{{item.id}}"><h4> {{ item.title }} </h4></a></li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
