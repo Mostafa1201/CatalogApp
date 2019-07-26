@@ -1,12 +1,8 @@
-- The code is written in python and require python to be installed on your computer.
-- This project requires vagrant to be set up this will give you the PostgreSQL database and support software needed for this project.
-- to install vagrant navigate to this link : https://www.vagrantup.com/downloads.html and install the version for your operating system.
-- then download the VM configuration here : https://s3.amazonaws.com/video.udacity-data.com/topher/2018/April/5acfbfa3_fsnd-virtual-machine/fsnd-virtual-machine.zip.
-- you will end up with a new directory containing the VM files. Change to this directory in your terminal with cd. Inside, you will find another directory called vagrant. Change directory to it.
-- start the virtual machine by running this command : vagrant up
-- then log in to it by running this command : vagrant ssh
-- To run the code navigate to the catalog directory and run this command : python application.py
-- In the application you can sign in normally or sign in with google
-- users that are signed in can access add , edit , delete functionality on categories and items
-- users cant edit or delete items that belong to another users and the buttons will not be shown
-to them
+# Description
+This is an application that provides a list of items within a variety of categories as well as provide a user registration and authentication system. Registered users will have the ability to post, edit and delete their own items.
+# Tools
+..* **Framework** : Flask
+..* **Language** : python
+..* **Database** : Postgresql
+..* **Third Party APIS** : Google API
+
